@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediVision Mobile</title>
+    <link rel="stylesheet" href="user.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="logo">Medi Vision</h1>
+            <a href="#" class="profile-link" id="profileNav" aria-label="Profile">
+                <img src="user.png" alt="Profile" class="profile-img">
+            </a>
+        </div>
+    </header>
+
+    <div class="nav-container">
+        <nav>
+            <ul>
+                <li><a href="#" class="active" id="homeNav">Home</a></li>
+                <li><a href="#" id="medicalDataNav">Medical Data</a></li>
+                <li><a href="#" id="medicalLogsNav">Medical Logs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container" id="homeSection">
+        <!-- Greetings Section -->
+        <div class="card">
+            <h2 class="greeting">Good morning, John!</h2>
+            <p>Here's a quick update on your health and upcoming events.</p>
+        </div>
+
+        <!-- Home Medicine Recommendations Section -->
+        <div class="card">
+            <h3 class="section-title">Home Medicine Recommendations</h3>
+            <div class="horizontal-scroll" id="medicineContainer">
+                <!-- Medicines will be inserted here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Next Appointment Section -->
+        <div class="card">
+            <h3 class="section-title">Next Appointment</h3>
+            <p class="appointment-text"><span id="nextAppointment">3</span> days until your appointment with Dr. Smith</p>
+        </div>
+
+        <!-- Recently Visited Hospitals Section -->
+        <div class="card">
+            <h3 class="section-title">Recent Hospitals</h3>
+            <div class="horizontal-scroll" id="hospitalContainer">
+                <!-- Hospitals will be inserted here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- SDC Lock/Unlock Section -->
+        <div class="card">
+            <div class="sdc-section">
+                <h3 class="section-title">SDC Card Access</h3>
+                <p>Allow doctors or authorized users to access your data</p>
+                <label class="switch">
+                    <input type="checkbox" id="sdcToggle" aria-label="SDC Card Toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <p class="note">Note: Hospitals can access your data for emergency purposes.</p>
+        </div>
+
+         <!-- SDC code Generation -->
+         <div class="sdc-code-section card">
+            <h3 class="section-title">Generate SDC Code</h3>
+            <button id="generateCodeBtn" class="view-details">Generate Code</button>
+            <div id="sdcCodeContainer" style="display: none;">
+                <p><strong>SDC Code:</strong> <span id="sdcCode"></span></p>
+                <p><strong>Validity:</strong> <span id="codeValidity"></span></p>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Medical Logs Section -->
+    <div class="container" id="medicalLogsSection" style="display: none;">
+        <div class="card">
+            <h3 class="section-title">Medical Logs</h3>
+            <div id="medicalLogsContainer">
+                <!-- Medical logs will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Medical Data Section -->
+    <div class="container" id="medicalDataSection" style="display: none;">
+        <div class="card">
+            <h3 class="section-title">Medical Data</h3>
+
+            <!-- Search Bar -->
+            <input type="text" id="searchBar" placeholder="Search by diagnosis, physician, hospital, or date" class="search-bar" aria-label="Medical Data Search Bar">
+
+            <!-- Medical Data Entries -->
+            <div id="medicalDataContainer">
+                <!-- Medical data will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+ <!-- Personal Details Section -->
+ <div class="container" id="personalDetailsSection" style="display: none;">
+    <section id="personalDetails" class="content-section">
+        <!-- Personal Details Section -->
+        <div class="personal-details-grid">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" value="John Doe" id="fullName" readonly>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" value="2005-04-16" id="dob" readonly>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" disabled>
+                    <option value="male" selected>Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="tel" id="age" value="19" readonly>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" value="555-1234567" readonly>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" value="john.doe@example.com" readonly>
+            </div>
+            <div class="form-group full-width">
+                <label for="address">Address</label>
+                <input type="text" id="address" value="123 Main St, Anytown, USA" readonly>
+            </div>
+        </div>
+
+        <h2 class="section-heading">Emergency Contacts</h2>
+        <div class="emergency-contacts-grid">
+            <div class="form-group">
+                <label for="emergencyName">Name</label>
+                <input type="text" value="Jane Doe" id="emergencyName" readonly>
+            </div>
+            <div class="form-group">
+                <label for="emergencyPhone">Phone</label>
+                <input type="tel" id="emergencyPhone" value="555-9876543" readonly>
+            </div>
+            <div class="form-group full-width">
+                <label for="emergencyAddress">Address</label>
+                <input type="text" id="emergencyAddress" value="456 Oak St, Anytown, USA" readonly>
+            </div>
+            <div class="form-group">
+                <label for="emergencyRelation">Relation</label>
+                <input type="text" id="emergencyRelation" value="Spouse" readonly>
+            </div>
+        </div>
+        
+        <h2 class="section-heading">Social History</h2>
+        <div class="social-history-grid emergency-contacts-grid">
+            <div class="form-group">
+                <label>Smoking</label>
+                <span class="social-history-term">Yes</span>
+            </div>
+            <div class="form-group">
+                <label>Alcoholism</label>
+                <span class="social-history-term">No</span>
+            </div>
+            <div class="form-group">
+                <label>Tobacco Chewing</label>
+                <span class="social-history-term">No</span>
+            </div>
+            <div class="form-group">
+                <label>Others</label>
+                <span class="social-history-term">No</span>
+            </div>
+            <div class="form-group full-width">
+                <label for="othersDetails">Others Details</label>
+                <input type="text" id="othersDetails" placeholder="Specify other social history details" readonly>
+            </div>
+            <div class="form-group">
+                <label>Pregnancy</label>
+                <span class="social-history-term">No</span>
+            </div>
+            <div class="form-group">
+                <label>Exercise</label>
+                <span class="social-history-term">Yes</span>
+            </div>
+        </div>
+
+        <h2 class="section-heading">Allergies</h2>
+        <div id="allergiesList" style="width: 100%; max-width: 400px; margin: 0 auto;">
+            <!-- Existing allergies -->
+            <div class="allergy-item">
+                <div class="allergy-content">
+                    <span class="allergy-name">Peanuts</span>
+                    <button class="view-details">View Details</button>
+                </div>
+                <div class="allergy-details" style="display: none;">
+                    <textarea readonly class="allergy-textarea">Severe reaction, requires immediate EpiPen administration.</textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+    <script src="user.js"></script>
+</body>
+</html>
